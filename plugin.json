@@ -4,7 +4,7 @@
     "Name": "Wox.Plugin.Putty",
     "Description": "Launch Putty Sessions",
     "Author":"Konstantin Zaitcev",
-    "Version":"1.0",
+    "Version":"1.0.1",
     "Language": "csharp",
     "Website": "",
     "ExecuteFileName": "Wox.Plugin.Putty.dll",
