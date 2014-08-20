@@ -55,7 +55,7 @@ namespace Wox.Plugin.Putty
 						}
 						p.Start();
 					} catch (Exception ex) {
-						context.ShowMsg.Invoke("Putty Error: " + name, ex.Message, ""); 
+						context.API.ShowMsg("Putty Error: " + name, ex.Message, ""); 
 						return false;
 						// ignore exception
 					}
