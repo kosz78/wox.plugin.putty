@@ -1,8 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-# SharpDevelop 5.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wox.Plugin.Putty", "Wox.Plugin.Putty.csproj", "{2E3E0C47-F4E2-443C-8BB3-BF59E6E4C9DD}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
