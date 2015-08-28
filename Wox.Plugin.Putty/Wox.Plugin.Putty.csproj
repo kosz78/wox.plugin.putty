@@ -59,6 +59,10 @@
     <Compile Include="PuttySessionService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\plugin.json">
+      <Link>plugin.json</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
