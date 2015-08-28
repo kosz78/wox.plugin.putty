@@ -53,7 +53,7 @@
                 return results;
             }
 
-            var puttySessions =PuttySessionService.GetAll().Where(session => session.Identifier.ToLowerInvariant().Contains(querySearch.ToLowerInvariant()));
+            var puttySessions = PuttySessionService.GetAll().Where(session => session.Identifier.ToLowerInvariant().Contains(querySearch.ToLowerInvariant()));
             foreach (var puttySession in puttySessions)
             {
                 results.Add(CreateResult(puttySession.Identifier, puttySession.ToString()));
@@ -75,7 +75,7 @@
             {
                 Title = title,
                 SubTitle = subTitle,
-                IcoPath = "logo.png",
+                IcoPath = "icon.png",
                 Action = context => LaunchPuttySession(title),
             };
         }
