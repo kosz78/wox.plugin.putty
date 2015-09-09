@@ -3,10 +3,10 @@
     "ActionKeyword": "pt",
     "Name": "Wox.Plugin.Putty",
     "Description": "Launch Putty Sessions",
-    "Author":"Konstantin Zaitcev",
+    "Author":"Konstantin Zaitcev, Kai Eichinger (@cH40zLord)",
     "Version":"1.0.1",
     "Language": "csharp",
     "Website": "",
     "ExecuteFileName": "Wox.Plugin.Putty.dll",
-    "IcoPath":"Images\\plugin.png"
+    "IcoPath":"icon.png"
 }
