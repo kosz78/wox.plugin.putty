@@ -4,28 +4,36 @@
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
+    using System.Windows.Controls;
 
-    public class PuttyPlugin : IPlugin
+    public class PuttyPlugin : IPlugin, ISettingProvider
     {
         /// <summary>
         /// A refernce to the current PluginInitContext
         /// </summary>
         private PluginInitContext _context;
 
+        private Settings _settings;
+
         /// <summary>
         /// A reference to the Putty PuttySessionService
         /// </summary>
         public IPuttySessionService PuttySessionService { get; set; }
 
+        /// <summary>
+        /// A reference to the SettingsService
+        /// </summary>
+        private SettingsService SettingsService { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:System.Object"/> class.
         /// </summary>
         public PuttyPlugin()
         {
+            SettingsService = new SettingsService();
+            _settings = SettingsService.LoadSettings();
             PuttySessionService = new PuttySessionService();
         }
-
 
         /// <summary>
         /// Initializes the Putty plugin
@@ -36,7 +44,6 @@
             _context = context;
         }
 
-
         /// <summary>
         /// Returns a filtered Putty sessions list based on the given Query.
         /// If no Query.ActionParameter is provided only the default Putty item is returned.
@@ -45,12 +52,23 @@
         /// <returns>The filtered Putty session list</returns>
         public List<Result> Query(Query query)
         {
-            var results = new List<Result> { CreateResult() };
+            var results = new List<Result> { };
+            if (_settings.AddPuttyExeToResults)
+            {
+                results.Add(CreateResult());
+            }
             var querySearch = query.ActionParameters.FirstOrDefault();
 
             if (string.IsNullOrEmpty(querySearch))
             {
-                return results;
+                if (_settings.AddPuttyExeToResults)
+                {
+                    return results;
+                }
+                else
+                {
+                    querySearch = string.Empty;
+                }
             }
 
             var puttySessions = PuttySessionService.GetAll().Where(session => session.Identifier.ToLowerInvariant().Contains(querySearch.ToLowerInvariant()));
@@ -61,7 +79,6 @@
 
             return results;
         }
-
 
         /// <summary>
         /// Creates a new Result item
@@ -79,7 +96,6 @@
                 Action = context => LaunchPuttySession(title),
             };
         }
-
 
         /// <summary>
         /// Launches a new Putty session
@@ -109,6 +125,11 @@
 
                 return false;
             }
+        }
+
+        public Control CreateSettingPanel()
+        {
+            return new PuttySettings(_settings);
         }
     }
 }

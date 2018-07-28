@@ -1,8 +1,8 @@
 ﻿namespace Wox.Plugin.Putty
 {
+    using Microsoft.Win32;
     using System;
     using System.Collections.Generic;
-    using Microsoft.Win32;
 
     public class PuttySessionService : IPuttySessionService
     {
