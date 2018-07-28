@@ -1,5 +1,6 @@
 ﻿namespace Wox.Plugin.Putty
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.Win32;
 
@@ -28,19 +29,25 @@
                         {
                             continue;
                         }
-
-                        results.Add(new PuttySession
+                        try
                         {
-                            Identifier = subKey,
-                            Protocol = puttySessionSubKey.GetValue("Protocol").ToString(),
-                            Username = puttySessionSubKey.GetValue("UserName").ToString(),
-                            Hostname = puttySessionSubKey.GetValue("HostName").ToString(),
-                        });
+                            results.Add(new PuttySession
+                            {
+                                Identifier = subKey,
+                                Protocol = puttySessionSubKey.GetValue("Protocol").ToString(),
+                                Username = puttySessionSubKey.GetValue("UserName").ToString(),
+                                Hostname = puttySessionSubKey.GetValue("HostName").ToString(),
+                            });
+                        }
+                        catch (Exception)
+                        {
+                            // If there is any exception related to the registry access, just do nothing for that key, but don't let the whole results fails.
+                        }
                     }
                 }
             }
 
             return results;
-        } 
+        }
     }
 }
