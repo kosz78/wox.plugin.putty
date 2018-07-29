@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Wox.Plugin.Putty
@@ -18,17 +19,23 @@ namespace Wox.Plugin.Putty
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            AddPuttyExeInResults.IsChecked = _settings.AddPuttyExeToResults;
+            BindBooleanToCheckbox(AddPuttyExeInResults, () => _settings.AddPuttyExeToResults, (v) => _settings.AddPuttyExeToResults = v);
+            BindBooleanToCheckbox(AlwaysStartsSessionMaximized, () => _settings.AlwaysStartsSessionMaximized, (v) => _settings.AlwaysStartsSessionMaximized = v);
+        }
 
-            AddPuttyExeInResults.Checked += (o, ev) =>
+        private void BindBooleanToCheckbox(CheckBox checkBox, Func<bool> readBool, Action<bool> writeBool)
+        {
+            checkBox.IsChecked = readBool();
+
+            checkBox.Checked += (o, ev) =>
             {
-                _settings.AddPuttyExeToResults = true;
+                writeBool(true);
                 _settings.OnSettingsChanged?.Invoke(_settings);
             };
 
-            AddPuttyExeInResults.Unchecked += (o, ev) =>
+            checkBox.Unchecked += (o, ev) =>
             {
-                _settings.AddPuttyExeToResults = false;
+                writeBool(false);
                 _settings.OnSettingsChanged?.Invoke(_settings);
             };
         }

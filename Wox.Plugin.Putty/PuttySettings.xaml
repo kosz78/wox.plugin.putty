@@ -11,6 +11,7 @@
     <Border BorderBrush="Gray" Margin="10" BorderThickness="1">
         <StackPanel>
             <CheckBox x:Name="AddPuttyExeInResults" Content="Add putty exe in results" Margin="10" HorizontalAlignment="Left" />
+            <CheckBox x:Name="AlwaysStartsSessionMaximized" Content="Always starts a putty session maximized" Margin="10" HorizontalAlignment="Left" />
         </StackPanel>
     </Border>
 </UserControl>

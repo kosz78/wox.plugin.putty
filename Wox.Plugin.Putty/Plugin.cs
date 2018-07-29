@@ -114,6 +114,11 @@
                     p.StartInfo.Arguments = "-load \"" + sessionIdentifier + "\"";
                 }
 
+                if (_settings.AlwaysStartsSessionMaximized)
+                {
+                    p.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                }
+
                 p.Start();
 
                 return true;
