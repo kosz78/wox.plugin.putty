@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="Wox.Plugin, Version=1.2.0.442, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Wox.Plugin.1.2.0.442\lib\net35\Wox.Plugin.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -55,7 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wox.Plugin.Putty\Wox.Plugin.Putty.csproj">
