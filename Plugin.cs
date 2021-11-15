@@ -72,9 +72,16 @@ namespace PowerToys.Plugin.Putty {
       try {
         var p = new Process { StartInfo = { FileName = "putty" } };
 
-        // Optionally pass the session identifier
-        if (!string.IsNullOrEmpty(host))
+        // Optionally pass the session identifier or host+port
+        if (!string.IsNullOrEmpty(host)) {
           p.StartInfo.Arguments = "-ssh \"" + host + "\"";
+          if (host.Contains(':')) {
+            var parts = host.Split(':', StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length == 2)
+              p.StartInfo.Arguments = $"-ssh \"{parts[0]}\" -P {parts[1].Trim()}";
+            else throw new Exception("Supported format <host>:[<port>]");
+          }
+        }
 
         p.Start();
 
