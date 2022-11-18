@@ -1,0 +1,13 @@
+﻿{
+  "ID": "C2A6632A06E027D48A7D88A78FA5B13E",
+  "ActionKeyword": "idgen",
+  "Name": "Wox.Plugin.IdGen",
+  "Description": "ID Generator",
+  "Author": "HGJ",
+  "Version": "1.0.0",
+  "Language": "csharp",
+  "Website": "",
+  "ExecuteFileName": "PowerToys.Plugin.IdGen.dll",
+  "IcoPathDark": "icon.png",
+  "IcoPathLight": "icon.png"
+}
