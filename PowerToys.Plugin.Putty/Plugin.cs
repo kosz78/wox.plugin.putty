@@ -6,6 +6,7 @@ using Wox.Plugin;
 
 namespace PowerToys.Plugin.Putty {
   public class Plugin : IPlugin {
+    public static string PluginID => "54A6672A06E047A48A7D88A78FA5B13E";
     private PluginInitContext _context;
 
     public List<Result> Query(Query query) {
